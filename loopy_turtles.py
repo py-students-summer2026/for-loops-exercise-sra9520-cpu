@@ -21,7 +21,7 @@ def create_turtle(stroke_color, bg_color):
     :returns: The turtle object with the color settings applied.
     """
 
-    # create the turtle and set its trial color
+    # create the turtle and set its trail color
     t = turtle.Turtle()
     t.shape("turtle")  # make it look like a turtle
     t.color(stroke_color)  # set the color of the trail left by the turtle
@@ -78,6 +78,19 @@ def draw_square(t, start_x, start_y, length, rotation_direction, fill_color):
     :param rotation_direction: Either 'left' or 'right', indicating the direction the turtle should rotate after it completes each line of the rectangle.
     :param fill_color: The color with which to fill in the area drawn by the turtle.
     """
+    pick_up_and_move_turtle(t, start_x, start_y)
+    t.fillcolor(fill_color)
+    t.begin_fill()
+    for i in range(4):
+        print_turtle_position(t)
+        t.forward(length)
+        if rotation_direction == "left":
+             t.left(90)
+        else:
+            t.right(90)
+    t.end_fill()            
+
+
 
 
 def draw_star(
@@ -100,3 +113,26 @@ def draw_star(
     :param initial_rotation_direction: The direction of the first rotation the turtle should make when drawing each point, either 'left' or 'right'.
     :param fill_color: The color with which to fill in the area drawn by the turtle.
     """
+    pick_up_and_move_turtle(t, start_x, start_y)
+    t.fillcolor(fill_color)
+    t.begin_fill()
+    small_angle = angle - 72
+    for i in range(5):
+         print_turtle_position(t)
+         if initial_rotation_direction == "left":
+              t.left(angle)
+              t.forward(length)
+              t.right(small_angle)
+              t.forward(length)
+         else:
+             t.right(angle)
+             t.forward(length)
+             t.left(small_angle)
+             t.forward(length)
+    t.end_fill()
+
+        
+             
+
+
+
